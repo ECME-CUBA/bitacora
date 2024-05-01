@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = com.btech.bitacora.\
+    config.SqlTestContainersSpringContextCustomizerFactory
