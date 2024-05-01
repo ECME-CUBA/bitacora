@@ -1,0 +1,64 @@
+
+entity Proyecto {
+	ProyectoName String required,
+    Cliente String required
+}
+
+entity Desarrollador {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String required,
+	lastName String required,
+	email String required,
+	phoneNumber String required,
+	categoria Categoria 
+}
+
+
+entity Bitacora {
+	dueDate Instant,
+	
+}
+
+enum Categoria {
+    JUNIOR, INTERMEDIO, SENIOR
+}
+
+
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	/**
+	* A relationship
+	*/
+	Proyecto to
+	/**
+	* Another side of the same relationship
+	*/
+	Desarrollador{Proyecto}
+}
+
+
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	
+	Bitacora{Proyecto} to Proyecto,
+	
+}
+
+// Set pagination options
+
+paginate Bitacora, Desarrollador, Job with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
